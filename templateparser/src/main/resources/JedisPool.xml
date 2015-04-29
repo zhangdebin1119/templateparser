@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<JedisConfig id = "1">
+		<property name="whenExhaustedAction">1</property>
+		<property name="testOnBorrow">true</property><!-- 设定在借出对象时是否进行有效性检查 -->
+		<property name="testOnReturn">false</property><!-- 设定在还回对象时是否进行有效性检查 -->
+		<property name="maxWait">3000</property><!-- 指明若在对象池空时调用borrowObject方法的行为被设定成等待，最多等待多少毫秒。如果等待时间超过了这个数值,
+												则会抛出一个java.util.NoSuchElementException异常。如果这个值不是正数，表示无限期等待 -->
+		<property name="maxActive">300</property><!-- 指明能从池中借出的对象的最大数目。如果这个值不是正数，表示没有限制。 -->
+		<property name="maxIdle">30</property><!-- 允许最大空闲对象数 -->
+		<property name="minIdle">10</property><!-- 允许最小空闲对象数  -->
+		<property name="timeBetweenEvictionRunsMillis">120000</property><!-- 设定间隔每过多少毫秒进行一次后台对象清理的行动。如果这个值不是正数，则实际上不会进行后台对象清理 -->
+		<property name="numTestsPerEvictionRun">3</property><!-- 设定在进行后台对象清理时，每次检查几个对象。如果这个值不是正数，则每次检查的对象数是检查时池内对象的总数乘以这个值的负倒数再向上取整的结果――
+										也就是说，如果这个值是-2（-3、-4、-5……）的话，那么每次大约检查当时池内对象总数的1/2（1/3、1/4、1/5……）左右 -->
+		<property name="testWhileIdle">true</property><!-- 设定在进行后台对象清理时，是否还对没有过期的池内对象进行有效性检查。不能通过有效性检查的对象也将被回收 -->
+		<property name="minEvictableIdleTimeMillis">-1</property><!-- 被空闲对象回收器回收前在池中保持空闲状态的最小时间毫秒数  -->
+</JedisConfig>
+<JedisServer name="template" config="1" host="localhost" port="6379" db="0" timeout="5000"/>
+</root>
